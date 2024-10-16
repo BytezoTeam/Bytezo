@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bytezo</title>
+    <link href="static/css/output.css" rel="stylesheet">
+    <style>
+        .navbar {
+            transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sticky Gray Glassy Navbar -->
+    <div id="navbar" class="navbar sticky top-0 z-50 bg-gray-800 bg-opacity-70 backdrop-blur-md text-gray-100">
+        <div class="flex-1">
+            <a class="btn btn-ghost normal-case text-xl" href="/" id="navbar-logo">Bytezo</a>
+        </div>
+        <div class="flex-none">
+            <!-- Mobile-friendly dropdown for small screens -->
+            <div class="dropdown dropdown-end lg:hidden">
+                <label tabindex="0" class="btn btn-ghost lg:hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </label>
+                <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                    <li><a href="#ourteam">Our Team</a></li>
+                    <li><a href="#projects">Our Projects</a></li>
+                    <li><a href="#our-history">Our History</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+            <!-- Horizontal menu for larger screens -->
+            <ul class="menu menu-horizontal px-1 hidden lg:flex">
+                <li><a href="#ourteam">Our Team</a></li>
+                <li><a href="#projects">Our Projects</a></li>
+                <li><a href="#our-history">Our History</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+        </div>
+    </div>
+
+    {% if send_message %}
+        <div role="alert" class="alert alert-success mt-3">
+            <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6 shrink-0 stroke-current"
+            fill="none"
+            viewBox="0 0 24 24">
+            <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>Your message was send! You get an email from us, as soon as possible</span>
+        </div>
+    {% endif %}
+
+    <!-- Slogan Section -->
+    <div class="flex items-center justify-center h-64 bg-gray-100 p-4 mt-3">
+        <h1 class="text-4xl md:text-6xl font-extrabold text-gray-800 text-center">
+            Building Tomorrow, One Line at a Time
+        </h1>
+    </div>
+
+    <!-- Hero Section with "Read More" Button -->
+<div class="hero bg-base-200 min-h-screen">
+    <div class="hero-content flex-col lg:flex-row-reverse">
+        <img
+            src="static/images/logo.png"
+            class="w-full max-w-xs md:max-w-sm rounded-lg shadow-3xl" />
+        <div class="text-center lg:text-left">
+            <h1 class="text-3xl md:text-5xl font-bold">Bytezo</h1>
+            <p class="py-6" id="short-text">
+                Specializing in web development, we are dedicated to building secure, scalable, fast, and modern software solutions, build to meet the evolving needs of users.
+            </p>
+
+            <!-- Hidden content that will show after clicking "Read More" -->
+            <p class="py-6 hidden" id="more-text">
+                We are committed to delivering excellence by creating cutting-edge applications that are both high-performing and built to last. Since 2023, we’ve been leading innovation and continuously pushing the limits of technology. With a talented and passionate team, we develop solutions that not only address today’s challenges but also help shape a better future.
+            </p>
+
+            <!-- Read More Button -->
+            <button class="btn btn-primary" id="read-more-btn" onclick="toggleMoreText()">Read More</button>
+
+            <button class="btn btn-primary hidden" id="read-less-btn" onclick="toggleMoreText()">Read Less</button>
+
+            <script>
+                function toggleMoreText() {
+                    var moreText = document.getElementById('more-text');
+                    var shortText = document.getElementById('short-text');
+                    var readMoreBtn = document.getElementById('read-more-btn');
+                    var readLessBtn = document.getElementById('read-less-btn');
+
+                    if (moreText.classList.contains('hidden')) {
+                        moreText.classList.remove('hidden');
+                        readMoreBtn.classList.add('hidden');
+                        readLessBtn.classList.remove('hidden');
+                    } else {
+                        moreText.classList.add('hidden');
+                        readMoreBtn.classList.remove('hidden');
+                        readLessBtn.classList.add('hidden');
+                    }
+                }
+            </script>
+
+        </div>
+    </div>
+</div>
+
+<section class="bg-gray-100 py-8">
+    <h2 class="text-xl font-bold text-center text-gray-800">
+        Interested? Scroll for more!
+    </h2>
+</section>
+
+    <section class="px-4 py-12 bg-base-200" id="ourteam">
+        <h2 class="text-3xl font-bold text-center mb-12">Our Team</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+    
+            <!-- Team Member 1 -->
+            <div class="flex items-center">
+                <img src="static/images/profile_pictures/2mal3.jpeg" alt="2mal3" class="w-32 h-32 rounded-full shadow-lg mr-6">
+                <div>
+                    <h3 class="text-2xl font-bold">2mal3</h3>
+                    <p class="text-gray-400 mb-4">Back- and Frontend Developer, Project Management, Server-Administrator</p>
+                    <a href="https://github.com/2mal3" target="_blank" class="btn btn-outline btn-primary">GitHub</a>
+                </div>
+            </div>
+    
+            <!-- Team Member 2 -->
+            <div class="flex items-center">
+                <img src="static/images/profile_pictures/luisschuimer.jpeg" alt="Luis Schuimer" class="w-32 h-32 rounded-full shadow-lg mr-6">
+                <div>
+                    <h3 class="text-2xl font-bold">Luis Schuimer</h3>
+                    <p class="text-gray-400 mb-4">Back- and Frondend Developer, Project Management, Server-Administrator</p>
+                    <a href="https://github.com/LuisSchuimer" target="_blank" class="btn btn-outline btn-primary">GitHub</a>
+                </div>
+            </div>
+    
+            <!-- Team Member 3 -->
+            <div class="flex items-center">
+                <img src="https://via.placeholder.com/150" alt="Team Member 3" class="w-32 h-32 rounded-full shadow-lg mr-6">
+                <div>
+                    <h3 class="text-2xl font-bold">Alice Johnson</h3>
+                    <p class="text-gray-400 mb-4">Front-End Developer with a knack for building interactive and responsive web applications.</p>
+                    <a href="https://github.com/alicejohnson" target="_blank" class="btn btn-outline btn-primary">GitHub</a>
+                </div>
+            </div>
+    
+            <!-- Team Member 4 -->
+            <div class="flex items-center">
+                <img src="https://via.placeholder.com/150" alt="Team Member 4" class="w-32 h-32 rounded-full shadow-lg mr-6">
+                <div>
+                    <h3 class="text-2xl font-bold">Bob Williams</h3>
+                    <p class="text-gray-400 mb-4">Back-End Developer specializing in scalable systems and database management.</p>
+                    <a href="https://github.com/bobwilliams" target="_blank" class="btn btn-outline btn-primary">GitHub</a>
+                </div>
+            </div>
+    
+        </div>
+    </section>
+
+    <section class="px-4 py-12 bg-base-200" id="projects">
+        <h2 class="text-3xl font-bold text-center mb-12">Our Projects</h2>
+    
+        <!-- Grid Layout that adapts based on number of projects -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+            <!-- Single Project (Expands to full width on larger screens) -->
+            <div class="bg-base-100 rounded-lg shadow-lg p-6 lg:col-span-3 md:col-span-2">
+                <!-- Project Title -->
+                <h3 class="text-3xl font-bold mb-4">Eventfully</h3>
+                
+                <!-- Browser Mockup with Image -->
+                <div class="mockup-browser bg-base-300 border rounded-lg overflow-hidden shadow-lg mb-4">
+                    <div class="mockup-browser-toolbar">
+                        <div class="input">
+                            <a href="https://eventfully.ugolis.de" target="_blank">https://eventfully.ugolis.de</a>
+                        </div>
+                    </div>
+                    <img src="static/images/eventfully_screenshot.png" alt="Eventfully Project" class="w-full h-auto">
+                </div>
+                
+                <!-- Small Description -->
+                <p class="text-gray-400 mb-4">
+                    Eventfully is a software to find and explore new events in your area. It combines many different event sites in one, providing various events in your area and across Europe.
+                </p>
+                
+                <!-- Buttons to Website and GitHub -->
+                <a href="https://eventfully.ugolis.de" target="_blank" class="btn btn-primary">Visit Eventfully</a>
+                <a href="https://github.com/BytezoTeam/Eventfully" target="_blank" class="btn btn-primary mt-3">Eventfully on GitHub</a>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="px-4 py-12 bg-base-200" id="our-history">
+        <h2 class="text-3xl font-bold text-center mb-12">Our History</h2>
+    
+        <ul class="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
+            <!-- Milestone 1 -->
+            <li>
+                <div class="timeline-middle">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+                    </svg>
+                </div>
+                <div class="timeline-start mb-10 md:text-end">
+                    <time class="font-mono italic">2023</time>
+                    <div class="text-lg font-black">Our Group is Founded</div>
+                    Bytezo was established in 2023 on a JugendHackt Colone Event. We founded Bytezo, as a group
+                    of developers, to make software together.
+                </div>
+                <hr />
+            </li>
+    
+            <!-- Milestone 2 -->
+            <li>
+                <hr />
+                <div class="timeline-middle">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+                    </svg>
+                </div>
+                <div class="timeline-end mb-10">
+                    <time class="font-mono italic">Late 2023</time>
+                    <div class="text-lg font-black">Start of Eventfully</div>
+                    In 2023, we also started "MyEventWorld" that would later be renamed "AccessibilityEvents" and would finally be named Eventfully.
+                    We also applied for Youth-Hacking-For-Freedom (YH4F) Hackathon, with the goal to develop Eventfully further into a finished product.
+                </div>
+                <hr />
+            </li>
+    
+            <!-- Milestone 3 -->
+            <li>
+                <hr />
+                <div class="timeline-middle">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+                    </svg>
+                </div>
+                <div class="timeline-start mb-10 md:text-end">
+                    <time class="font-mono italic">January to June of 2024</time>
+                    <div class="text-lg font-black">Development of Eventfully</div>
+                    We started reworking Eventfully from the ground up. From January to June of 2024 we developed Eventfully, with weekly
+                    meetings, sharing our progress and bainstorming together.
+                </div>
+                <hr />
+            </li>
+    
+            <!-- Milestone 4 -->
+            <li>
+                <hr />
+                <div class="timeline-middle">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+                    </svg>
+                </div>
+                <div class="timeline-end mb-10">
+                    <time class="font-mono italic">September of 2024</time>
+                    <div class="text-lg font-black">3rd Place at YH4F</div>
+                    In August 2024, after an interview with YH4F, about Eventfully, we got the news
+                    that Eventfully won the 3rd place, winning the Awesome Hacker Award.
+                </div>
+                <hr />
+            </li>
+    
+            <!-- Milestone 5 -->
+            <li>
+                <hr />
+                <div class="timeline-middle">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+                    </svg>
+                </div>
+                <div class="timeline-start mb-10 md:text-end">
+                    <time class="font-mono italic">Future</time>
+                    <div class="text-lg font-black">Future Innovation</div>
+                    Looking ahead we want to found an Association, wanting to continue developing software.
+                </div>
+            </li>
+        </ul>
+    </section>
+
+    <section id="contact" class="px-4 py-12 bg-gray-300">
+        <h2 class="text-3xl font-bold text-center mb-12 text-gray-900">Contact Us</h2>
+        <div class="max-w-lg mx-auto">
+            <form action="/send_message" method="post" class="space-y-4">
+                <!-- Name Field -->
+                <div>
+                    <label for="name" class="block text-lg font-medium text-gray-700">Your Name</label>
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        required
+                        class="input input-bordered w-full mt-1"
+                        placeholder="John Doe">
+                </div>
+    
+                <!-- Email Field -->
+                <div>
+                    <label for="email" class="block text-lg font-medium text-gray-700">Email Address</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        required
+                        class="input input-bordered w-full mt-1"
+                        placeholder="you@example.com">
+                </div>
+    
+                <!-- Message Field -->
+                <div>
+                    <label for="message" class="block text-lg font-medium text-gray-700">Message</label>
+                    <textarea
+                        id="message"
+                        name="message"
+                        required
+                        class="textarea textarea-bordered w-full mt-1"
+                        rows="5"
+                        placeholder="Your message"></textarea>
+                </div>
+    
+                <!-- Submit Button -->
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary w-full">
+                        Send Message
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+
+    <!-- Back to Top Button -->
+    <div class="flex justify-center my-8">
+        <button onclick="scrollToTop()" class="btn btn-primary">
+            Back to the Top
+        </button>
+    </div>
+
+    <script>
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+
+
+    <footer class="footer bg-neutral text-neutral-content items-center p-4">
+        <aside class="grid-flow-col items-center">
+        <img
+            width="36"
+            height="36"
+            viewBox="0 0 24 24"
+            src="static/images/logo.png"
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            class="fill-current">
+        </img>
+            <p>Copyright © 2024 Bytezo - All rights reserved</p>
+        </aside>
+        <nav class="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
+            <a href="https://github.com/BytezoTeam" target="_blank" class="btn btn-primary">Visit our GitHub</a>
+        </nav>
+    </footer>
+</body>
+</html>
