@@ -27,6 +27,9 @@ class database():
             message = message
         )
     
+    def get_message(self, id: str):
+        return Messages.get(Messages.id == id)
+    
     def delete_message(self, id):
         Messages.get(Messages.id == id).delete_instance()
         return True

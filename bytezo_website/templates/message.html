@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>View Message</title>
+    <link rel="stylesheet" href="/static/css/output.css" />
+</head>
+
+<body class="bg-base-200 min-h-screen flex items-center justify-center p-4">
+    <!-- Chat container -->
+    <div class="space-y-4 w-full max-w-lg">
+        <!-- Incoming message from sender -->
+        <div class="chat chat-start w-full max-w-full">
+            <div class="chat-image avatar">
+                <div class="w-10 rounded-full">
+                    <img alt="Sender Avatar" src="/static/images/avatar.png" />
+                </div>
+            </div>
+            <div class="chat-header">
+                {{ name }} <span id="sender-email">({{ email }})</span>
+            </div>
+            <div class="chat-bubble break-words w-full max-w-full">
+                <p>{{ message }}</p>
+            </div>
+            <div class="chat-footer opacity-50">Delivered</div>
+        </div>
+
+        <!-- Outgoing message from Bytezo -->
+        <div class="chat chat-end w-full max-w-full">
+            <div class="chat-image avatar">
+                <div class="w-10 rounded-full">
+                    <img alt="Bytezo Logo" src="/static/images/logo.png"/>
+                </div>
+            </div>
+            <div class="chat-header">
+                Bytezo
+            </div>
+            <div class="chat-bubble break-words w-full max-w-full">
+                <div class="flex space-x-2">
+                    <!-- Respond Button -->
+                    <button class="btn btn-primary" id="respond-button">Respond</button>
+                    <!-- Delete Button -->
+                    <a href="/delete_message/123" id="delete-button" class="btn btn-ghost">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Respond button functionality to open email client
+        document.getElementById('respond-button').addEventListener('click', function () {
+            const recipientEmail = document.getElementById('sender-email').innerText;
+            window.location.href = `mailto:${recipientEmail}`;
+        });
+    </script>
+</body>
+
+</html>
