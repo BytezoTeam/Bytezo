@@ -6,8 +6,8 @@ dist/
 wheels/
 *.egg-info
 
-# venv
-.venv
-
 # user generated files
+.env
 .DS_Store
+.venv/
+database.db
