@@ -1,7 +1,8 @@
 from peewee import *
 from uuid import uuid4
 
-db = SqliteDatabase("database.db")
+db = SqliteDatabase("database/database.db")
+
 
 class Messages(Model):
     id = TextField(primary_key=True)

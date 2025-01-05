@@ -11,6 +11,7 @@ dependencies = [
     "peewee>=3.17.7",
     "python-dotenv>=1.0.1",
     "niquests>=3.9.1",
+    "gunicorn>=23.0.0",
 ]
 readme = "README.md"
 requires-python = ">= 3.8"
@@ -26,6 +27,7 @@ css-build = "rye run tailwindcss-extra -i .//bytezo_website/static/css/input.css
 
 [tool.rye]
 managed = true
+virtual = true
 dev-dependencies = []
 
 [tool.hatch.metadata]

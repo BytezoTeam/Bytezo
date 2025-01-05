@@ -7,8 +7,8 @@
 #   all-features: false
 #   with-sources: false
 #   generate-hashes: false
+#   universal: false
 
--e file:.
 blinker==1.8.2
     # via flask
 charset-normalizer==3.4.0
@@ -16,13 +16,11 @@ charset-normalizer==3.4.0
 click==8.1.7
     # via flask
 flask==3.0.3
-    # via bytezo-website
+gunicorn==23.0.0
 h11==0.14.0
     # via urllib3-future
 idna==3.10
     # via niquests
-importlib-metadata==8.5.0
-    # via flask
 itsdangerous==2.2.0
     # via flask
 jh2==5.0.3
@@ -35,14 +33,12 @@ markupsafe==2.1.5
     # via jinja2
     # via werkzeug
 niquests==3.9.1
-    # via bytezo-website
     # via pytailwindcss-extra
+packaging==24.2
+    # via gunicorn
 peewee==3.17.7
-    # via bytezo-website
 pytailwindcss-extra==0.1.0
-    # via bytezo-website
 python-dotenv==1.0.1
-    # via bytezo-website
 qh3==1.2.1
     # via urllib3-future
 urllib3-future==2.10.905
@@ -51,5 +47,3 @@ wassima==1.1.3
     # via niquests
 werkzeug==3.0.4
     # via flask
-zipp==3.20.2
-    # via importlib-metadata
