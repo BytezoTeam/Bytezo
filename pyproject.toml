@@ -6,12 +6,12 @@ authors = [
     { name = "Luis Schuimer", email = "85784931+LuisSchuimer@users.noreply.github.com" }
 ]
 dependencies = [
-    "flask>=3.0.3",
-    "pytailwindcss-extra>=0.1.0",
-    "peewee>=3.17.7",
-    "python-dotenv>=1.0.1",
-    "niquests>=3.9.1",
-    "gunicorn>=23.0.0",
+    "flask==3.*",
+    "pytailwindcss-extra==0.*",
+    "peewee==3.*",
+    "python-dotenv==1.*",
+    "niquests==3.*",
+    "gunicorn==23.*",
 ]
 readme = "README.md"
 requires-python = ">= 3.8"
