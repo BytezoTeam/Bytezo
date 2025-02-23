@@ -14,23 +14,18 @@ class Messages(Model):
         database = db
 
 
-class database():
+class database:
     def __init__(self):
         self.db = db
         self.db.connect()
         self.db.create_tables([Messages])
-    
+
     def add_message(self, email: str, message: str, name: str):
-        return Messages.create(
-            id = str(uuid4()),
-            name = name,
-            email = email,
-            message = message
-        )
-    
+        return Messages.create(id=str(uuid4()), name=name, email=email, message=message)
+
     def get_message(self, id: str):
         return Messages.get(Messages.id == id)
-    
+
     def delete_message(self, id):
         Messages.get(Messages.id == id).delete_instance()
         return True
