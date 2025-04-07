@@ -21,7 +21,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.rye.scripts]
-dev = "python3 -m bytezo_website.server"
+dev = "python3 -m bytezo_website.main"
 css-gen = { cmd = "tailwindcss-extra -i .//bytezo_website/static/css/input.css -o .//bytezo_website/static/css/output.css --watch", env = { PYTAILWINDCSS_EXTRA_VERSION = "v1.7.27" } }
 css-build = { cmd = "tailwindcss-extra -i .//bytezo_website/static/css/input.css -o .//bytezo_website/static/css/output.css", env = { PYTAILWINDCSS_EXTRA_VERSION = "v1.7.27" } }
 
