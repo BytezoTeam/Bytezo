@@ -12,3 +12,4 @@ wheels/
 .venv/
 database.db
 .idea/
+output.css

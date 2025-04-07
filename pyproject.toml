@@ -22,8 +22,8 @@ build-backend = "hatchling.build"
 
 [tool.rye.scripts]
 dev = "python3 -m bytezo_website.server"
-css-watch = "rye run tailwindcss-extra -i .//bytezo_website/static/css/input.css -o .//bytezo_website/static/css/output.css --watch"
-css-build = "rye run tailwindcss-extra -i .//bytezo_website/static/css/input.css -o .//bytezo_website/static/css/output.css"
+css-gen = { cmd = "tailwindcss-extra -i .//bytezo_website/static/css/input.css -o .//bytezo_website/static/css/output.css --watch", env = { PYTAILWINDCSS_EXTRA_VERSION = "v1.7.27" } }
+css-build = { cmd = "tailwindcss-extra -i .//bytezo_website/static/css/input.css -o .//bytezo_website/static/css/output.css", env = { PYTAILWINDCSS_EXTRA_VERSION = "v1.7.27" } }
 
 [tool.rye]
 managed = true
