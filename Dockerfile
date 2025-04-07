@@ -8,7 +8,7 @@ COPY tailwind.config.js ./
 ENV PYTAILWINDCSS_EXTRA_VERSION=v1.7.27
 RUN pip install --no-cache-dir pytailwindcss-extra && \
     tailwindcss-extra && \
-    tailwindcss-extra -i ./bytezo_website/static/css/input.css -o .//bytezo_website/static/css/output.css
+    tailwindcss-extra -i ./bytezo_website/static/css/input.css -o .//bytezo_website/static/css/output.css --minify
 
 FROM python:3.11-alpine AS RUN
 
