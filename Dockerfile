@@ -2,12 +2,12 @@ FROM python:3.11-alpine AS build
 
 WORKDIR /app
 
+ENV PYTAILWINDCSS_EXTRA_VERSION=v1.7.27
+RUN pip install --no-cache-dir pytailwindcss-extra
 COPY bytezo_website/ bytezo_website/
 COPY tailwind.config.js ./
 # Build CSS Styles
-ENV PYTAILWINDCSS_EXTRA_VERSION=v1.7.27
-RUN pip install --no-cache-dir pytailwindcss-extra && \
-    tailwindcss-extra && \
+RUN tailwindcss-extra && \
     tailwindcss-extra -i ./bytezo_website/static/css/input.css -o .//bytezo_website/static/css/output.css --minify
 
 FROM python:3.11-alpine AS RUN
