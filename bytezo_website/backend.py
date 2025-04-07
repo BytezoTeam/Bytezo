@@ -1,7 +1,7 @@
 import niquests
 
 
-def send_push(key: str, name: str, id: str):
+def send_push(key: str, name: str, message_id: str) -> None:
     pushsaver_url = "https://www.pushsafer.com/api"
     server_url = "localhost:8000"
 
@@ -13,7 +13,7 @@ def send_push(key: str, name: str, id: str):
         "i": 33,
         "c": "#FF0000",
         "d": "a",
-        "u": f"http://{server_url}/get_message/{id}",
+        "u": f"http://{server_url}/get_message/{message_id}",
         "ut": "Open Full Message",
         "k": key,
     }

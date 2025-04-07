@@ -1,40 +1,49 @@
-from flask import Flask, redirect, render_template, request, url_for, jsonify
+from flask import Flask, redirect, render_template, request, url_for, make_response
+from flask import Response as FlaskResponse
+from werkzeug.wrappers.response import Response as WerkzeugResponse
 from http import HTTPStatus
 from os import getenv
 from bytezo_website.backend import send_push
-from bytezo_website.database import database
+from bytezo_website.database import Database, add_message, get_message
 
 DASHBOARD_PASS = getenv("ADMIN_PASS")
 PUSH_SAVER_KEY = getenv("PUSH_SAVER_KEY")
+if not PUSH_SAVER_KEY:
+    print("PUSH_SAVER_KEY not set")
+if not DASHBOARD_PASS:
+    print("DASHBOARD_PASS is not set")
 
-db = database()
-
-
+db = Database()
 app = Flask(__name__)
 
 
 @app.route("/")
-def index():
+def index() -> str:
     return render_template("index.html", send_message=request.args.get("send_message"))
 
 
 @app.route("/send_message", methods=["POST"])
-def send_message():
+def send_message_route() -> FlaskResponse | WerkzeugResponse:
+    if not PUSH_SAVER_KEY:
+        return make_response("", HTTPStatus.GONE)
+
     name = request.form.get("name")
     email = request.form.get("email")
     message = request.form.get("message")
+    if not name or not email or not message:
+        return make_response("", HTTPStatus.BAD_REQUEST)
 
-    message = db.add_message(email=email, name=name, message=message)
-    send_push(key=PUSH_SAVER_KEY, id=message.id, name=message.name)
+    message = add_message(email=email, name=name, message=message)
+    send_push(key=PUSH_SAVER_KEY, message_id=str(message.id), name=str(message.name))
     return redirect(url_for("index", send_message=True))
 
 
 @app.route("/get_message/<id>")
-def get_message(id):
-    if not id:
-        return "", HTTPStatus.BAD_REQUEST
+def get_message_route(message_id: str) -> FlaskResponse | str:
+    if not message_id:
+        return make_response("", HTTPStatus.BAD_REQUEST)
 
-    message = db.get_message(id)
+    message = get_message(message_id)
     return render_template("message.html", name=message.name, message=message.message, email=message.email)
 
 

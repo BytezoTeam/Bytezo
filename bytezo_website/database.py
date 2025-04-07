@@ -1,4 +1,4 @@
-from peewee import *
+from peewee import SqliteDatabase, TextField, Model
 from uuid import uuid4
 
 db = SqliteDatabase("database/database.db")
@@ -14,18 +14,20 @@ class Messages(Model):
         database = db
 
 
-class database:
-    def __init__(self):
+class Database:
+    def __init__(self: "Database") -> None:
         self.db = db
         self.db.connect()
         self.db.create_tables([Messages])
 
-    def add_message(self, email: str, message: str, name: str):
-        return Messages.create(id=str(uuid4()), name=name, email=email, message=message)
 
-    def get_message(self, id: str):
-        return Messages.get(Messages.id == id)
+def add_message(email: str, message: str, name: str) -> Messages:
+    return Messages.create(id=str(uuid4()), name=name, email=email, message=message)
 
-    def delete_message(self, id):
-        Messages.get(Messages.id == id).delete_instance()
-        return True
+
+def get_message(message_id: str) -> Messages:
+    return Messages.get(Messages.id == message_id)
+
+
+def delete_message(message_id: str) -> None:
+    Messages.get(Messages.id == message_id).delete_instance()
