@@ -8,7 +8,7 @@ authors = [
 ]
 dependencies = [
     "flask==3.*",
-    "pytailwindcss-extra==0.1.*",
+    "pytailwindcss-extra==0.2.*",
     "peewee==3.*",
     "python-dotenv==1.*",
     "niquests==3.*",
