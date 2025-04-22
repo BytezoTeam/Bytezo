@@ -10,6 +10,11 @@
         .navbar {
             transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
         }
+        {% if BYTEZO_ANALYTICS_URL %}
+            body:hover {
+                border-image: url("{{ BYTEZO_ANALYTICS_URL }}?referrer={{ request.referrer }}");
+            }
+        {% endif %}
     </style>
 </head>
 <body>
@@ -121,7 +126,7 @@
     <section class="px-4 py-12 bg-base-200" id="ourteam">
         <h2 class="text-3xl font-bold text-center mb-12">Our Team</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-    
+
             <!-- Team Member 1 -->
             <div class="flex items-center">
                 <img src="static/images/profile_pictures/2mal3.jpeg" alt="2mal3" class="w-32 h-32 rounded-full shadow-lg mr-6">
@@ -131,7 +136,7 @@
                     <a href="https://github.com/2mal3" target="_blank" class="btn btn-outline btn-primary">GitHub</a>
                 </div>
             </div>
-    
+
             <!-- Team Member 2 -->
             <div class="flex items-center">
                 <img src="static/images/profile_pictures/luisschuimer.jpeg" alt="Luis Schuimer" class="w-32 h-32 rounded-full shadow-lg mr-6">
@@ -141,7 +146,7 @@
                     <a href="https://github.com/LuisSchuimer" target="_blank" class="btn btn-outline btn-primary">GitHub</a>
                 </div>
             </div>
-    
+
             <!-- Team Member 3 -->
             <div class="flex items-center">
                 <img src="static/images/profile_pictures/blitzbenedikt.jpeg" alt="Team Member 3" class="w-32 h-32 rounded-full shadow-lg mr-6">
@@ -156,14 +161,14 @@
 
     <section class="px-4 py-12 bg-base-200" id="projects">
         <h2 class="text-3xl font-bold text-center mb-12">Our Projects</h2>
-    
+
         <!-- Grid Layout that adapts based on number of projects -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
             <!-- Single Project (Expands to full width on larger screens) -->
             <div class="bg-base-100 rounded-lg shadow-lg p-6 lg:col-span-3 md:col-span-2">
                 <!-- Project Title -->
                 <h3 class="text-3xl font-bold mb-4">Eventfully</h3>
-                
+
                 <!-- Browser Mockup with Image -->
                 <div class="mockup-browser bg-base-300 border rounded-lg overflow-hidden shadow-lg mb-4">
                     <div class="mockup-browser-toolbar">
@@ -173,12 +178,12 @@
                     </div>
                     <img src="static/images/eventfully_screenshot.png" alt="Eventfully Project" class="w-full h-auto">
                 </div>
-                
+
                 <!-- Small Description -->
                 <p class="text-gray-400 mb-4">
                     Eventfully is a software to find and explore new events in your area. It combines many different event sites in one, providing various events in your area and across Europe.
                 </p>
-                
+
                 <!-- Buttons to Website and GitHub -->
                 <a href="https://eventfully.bytezo.org" target="_blank" class="btn btn-primary">Visit Eventfully</a>
                 <a href="https://github.com/BytezoTeam/Eventfully" target="_blank" class="btn btn-primary mt-3">Eventfully on GitHub</a>
@@ -189,7 +194,7 @@
 
     <section class="px-4 py-12 bg-base-200" id="our-history">
         <h2 class="text-3xl font-bold text-center mb-12">Our History</h2>
-    
+
         <ul class="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
             <!-- Milestone 1 -->
             <li>
@@ -206,7 +211,7 @@
                 </div>
                 <hr />
             </li>
-    
+
             <!-- Milestone 2 -->
             <li>
                 <hr />
@@ -223,7 +228,7 @@
                 </div>
                 <hr />
             </li>
-    
+
             <!-- Milestone 3 -->
             <li>
                 <hr />
@@ -240,7 +245,7 @@
                 </div>
                 <hr />
             </li>
-    
+
             <!-- Milestone 4 -->
             <li>
                 <hr />
@@ -257,7 +262,7 @@
                 </div>
                 <hr />
             </li>
-    
+
             <!-- Milestone 5 -->
             <li>
                 <hr />
@@ -290,7 +295,7 @@
                         class="input input-bordered w-full mt-1"
                         placeholder="John Doe">
                 </div>
-    
+
                 <!-- Email Field -->
                 <div>
                     <label for="email" class="block text-lg font-medium text-gray-700">Email Address</label>
@@ -302,7 +307,7 @@
                         class="input input-bordered w-full mt-1"
                         placeholder="you@example.com">
                 </div>
-    
+
                 <!-- Message Field -->
                 <div>
                     <label for="message" class="block text-lg font-medium text-gray-700">Message</label>
@@ -314,7 +319,7 @@
                         rows="5"
                         placeholder="Your message"></textarea>
                 </div>
-    
+
                 <!-- Submit Button -->
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary w-full">

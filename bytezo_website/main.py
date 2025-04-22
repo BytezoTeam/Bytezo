@@ -1,17 +1,25 @@
+from http import HTTPStatus
+from os import getenv
+
 from flask import Flask, redirect, render_template, request, url_for, make_response
 from flask import Response as FlaskResponse
 from werkzeug.wrappers.response import Response as WerkzeugResponse
-from http import HTTPStatus
-from os import getenv
+from dotenv import load_dotenv
+
 from bytezo_website.backend import send_push
 from bytezo_website.database import Database, add_message, get_message
 
+
+load_dotenv()
 DASHBOARD_PASS = getenv("ADMIN_PASS")
 PUSH_SAVER_KEY = getenv("PUSH_SAVER_KEY")
 if not PUSH_SAVER_KEY:
     print("PUSH_SAVER_KEY not set")
 if not DASHBOARD_PASS:
     print("DASHBOARD_PASS is not set")
+BYTEZO_ANALYTICS_URL = getenv("BYTEZO_ANALYTICS_URL")
+if not BYTEZO_ANALYTICS_URL:
+    print("BYTEZO_ANALYTICS_URL is not set")
 
 db = Database()
 app = Flask(__name__)
@@ -19,7 +27,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def index() -> str:
-    return render_template("index.html", send_message=request.args.get("send_message"))
+    return render_template("index.html", send_message=request.args.get("send_message"), BYTEZO_ANALYTICS_URL=BYTEZO_ANALYTICS_URL)
 
 
 @app.route("/send_message", methods=["POST"])
